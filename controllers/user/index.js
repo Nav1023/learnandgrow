@@ -1,7 +1,7 @@
 const User  = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const jwtSecret = "learningmanagementtoken";
+const config= require('../../config/');
 
 const userController = {
   login: async (req, res) => {
@@ -62,7 +62,7 @@ const userController = {
         }
       };
 
-      const token  = await jwt.sign(payload, jwtSecret,  {expiresIn: 240000});
+      const token  = await jwt.sign(payload, config.JWT_SECRET,  {expiresIn: 240000});
 
       res.status(200).send({
         status: true,

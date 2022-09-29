@@ -20,9 +20,6 @@ const CourseSchema = new Schema({
     type: Number,
   },
   instructor:[{
-    instructorId: {
-      type: Schema.Types.ObjectId
-    },
     name: {
       type: String,
       required: true,
@@ -34,21 +31,26 @@ const CourseSchema = new Schema({
       type: String
     }
   }],
-
   videos: [{
-    videoId: {
-      type: Schema.Types.ObjectId,
-    },
     title: {
       type: String,
     },
     url: {
       type: String,
+      required: true
     },
-    decription: {
+    description: {
       type: String
     }
-  }]
+  }],
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
+  modifiedAt: {
+    type: Date,
+    default: Date.now()
+  }
 
 });
 
